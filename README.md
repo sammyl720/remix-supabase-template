@@ -18,6 +18,7 @@ This template provides a starting point for building a Remix application with Ty
   - [3. Supabase Setup](#3-supabase-setup)
   - [4. Configure Environment Variables](#4-configure-environment-variables)
   - [5. Run the Application](#5-run-the-application)
+- [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
 - [Usage](#usage)
   - [Authentication Pages](#authentication-pages)
@@ -105,6 +106,37 @@ npm run dev
 ```
 
 Open your browser and navigate to `http://localhost:5173`.
+
+---
+
+## Project Structure
+
+```bash
+├── app
+│   ├── root.tsx              # Root route
+│   ├── components
+│   │   └── Navbar.tsx        # Top navigation bar component
+│   ├── routes
+│   │   ├── _index.tsx        # Home page (protected)
+│   │   ├── admin.tsx         # Admin page (protected)
+│   │   ├── login.tsx         # Login page
+│   │   ├── logout.ts         # Logout action
+│   │   ├── signup.tsx        # Signup page
+│   │   └── unauthorized.tsx  # Unauthorized access page
+│   ├── styles
+│   │   └── tailwind.css      # Tailwind CSS styles
+│   └── utils
+│       ├── session.server.ts # Session management
+│       ├── supabaseClient.ts # Client-side Supabase client
+│       └── supabaseServer.ts # Server-side Supabase client
+├── public
+│   └── build                 # Built assets
+├── .env                      # Environment variables
+├── package.json
+├── vite.config.js            # Vite configuration
+├── tailwind.config.ts        # Tailwind CSS configuration
+└── tsconfig.json             # TypeScript configuration
+```
 
 ---
 

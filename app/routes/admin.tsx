@@ -1,4 +1,3 @@
-// app/routes/admin.tsx
 import { LoaderFunctionArgs, redirect } from '@remix-run/node';
 import { getUser } from '~/utils/session.server';
 import { supabaseServer } from '~/utils/supabaseServer';
@@ -20,9 +19,9 @@ export const loader = async ({ request }: LoaderFunctionArgs) => {
 
 export default function AdminPage() {
   return (
-    <div>
-      <h1>Admin Panel</h1>
-      <p>Only accessible by admins.</p>
+    <div className="mt-8">
+      <h1 className="text-2xl font-bold">Admin Panel</h1>
+      <p className="mt-4">Only accessible by admins.</p>
     </div>
   );
 }

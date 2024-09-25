@@ -9,7 +9,7 @@ import type { LinksFunction, LoaderFunctionArgs, MetaFunction } from "@remix-run
 import Navbar from './components/Navbar';
 import { getUser } from './utils/session.server';
 
-import "./tailwind.css";
+import "./styles/tailwind.css";
 
 export const meta: MetaFunction = () => {
   return [
