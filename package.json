@@ -1,8 +1,30 @@
 {
-  "name": "remix-auth",
+  "name": "remix-supabase-template",
+  "version": "1.0.0",
+  "description": "A Remix TypeScript template with Supabase authentication and authorization, including Docker deployment.",
   "private": true,
   "sideEffects": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sammyl720/remix-supabase-template.git"
+  },
+  "keywords": [
+    "remix",
+    "supabase",
+    "typescript",
+    "authentication",
+    "authorization",
+    "docker",
+    "template",
+    "tailwindcss"
+  ],
+  "author": "Shmuel Leider <sam.leider@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sammyl720/remix-supabase-template/issues"
+  },
+  "homepage": "https://github.com/sammyl720/remix-supabase-template#readme",
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
