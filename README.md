@@ -6,6 +6,7 @@ This template provides a starting point for building a Remix application with Ty
 - **Role-Based Authorization**: Protect routes based on user roles.
 - **Tailwind CSS Styling**: Pre-configured UI components for a modern look.
 - **Top Navigation Bar**: A responsive navbar that adapts to authentication state.
+- **Dockerized Deployment**: Simplified deployment using Docker and Docker Compose.
 
 ---
 
@@ -18,6 +19,10 @@ This template provides a starting point for building a Remix application with Ty
   - [3. Supabase Setup](#3-supabase-setup)
   - [4. Configure Environment Variables](#4-configure-environment-variables)
   - [5. Run the Application](#5-run-the-application)
+  - [Docker Deployment](#docker-deployment)
+  - [1. Build the Docker Image](#1-build-the-docker-image)
+  - [2. Run the Docker Container](#2-run-the-docker-container)
+  - [3. Using Docker Compose](#3-using-docker-compose)
 - [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
 - [Usage](#usage)
@@ -109,6 +114,77 @@ Open your browser and navigate to `http://localhost:5173`.
 
 ---
 
+## Docker Deployment
+
+To simplify deployment, you can run the application inside a Docker container.
+
+### 1. Build the Docker Image
+
+Build the Docker image using the provided `Dockerfile`:
+
+```bash
+docker build -t my-remix-app .
+```
+
+- **`docker build`**: Command to build a Docker image.
+- **`-t my-remix-app`**: Tags the image with the name `my-remix-app`.
+- **`.`**: Specifies the current directory as the build context.
+
+### 2. Run the Docker Container
+
+Run the Docker container while passing in the environment variables:
+
+```bash
+docker run -p 3000:3000 --env-file .env my-remix-app
+```
+
+- **`-p 3000:3000`**: Maps port `3000` inside the container to port `3000` on your host machine.
+- **`--env-file .env`**: Passes the `.env` file to the container to set environment variables.
+- **`my-remix-app`**: The name of the image to run.
+
+If you wish to run the application on a different port, modify the `PORT` environment variable:
+
+```bash
+docker run -p 8080:8080 -e PORT=8080 --env-file .env my-remix-app
+```
+
+### 3. Using Docker Compose
+
+Alternatively, you can use Docker Compose to manage the container.
+
+#### Create a `docker-compose.yml` File
+
+```yaml
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "${PORT}:${PORT}"
+    env_file:
+      - .env
+    environment:
+      - PORT=${PORT}
+```
+
+#### Run the Application with Docker Compose
+
+Start the application using Docker Compose:
+
+```bash
+docker-compose up --build
+```
+
+- **`docker-compose up`**: Builds, (re)creates, starts, and attaches to containers for a service.
+- **`--build`**: Forces rebuild of the Docker image.
+
+#### Access the Application
+
+- Open your browser and navigate to `http://localhost:3000` (or the port specified in your `.env` file).
+
+---
+
 ## Project Structure
 
 ```bash
@@ -132,6 +208,9 @@ Open your browser and navigate to `http://localhost:5173`.
 ├── public
 │   └── build                 # Built assets
 ├── .env                      # Environment variables
+├── Dockerfile                # Docker configuration
+├── docker-compose.yml        # Docker Compose configuration
+├── .dockerignore             # Files to ignore in Docker context
 ├── package.json
 ├── vite.config.js            # Vite configuration
 ├── tailwind.config.ts        # Tailwind CSS configuration
@@ -145,6 +224,9 @@ Open your browser and navigate to `http://localhost:5173`.
 - `npm run dev`: Start the development server.
 - `npm run build`: Build the app for production.
 - `npm start`: Run the built app in production mode.
+- `docker build -t my-remix-app .`: Build the Docker image.
+- `docker run -p 3000:3000 --env-file .env my-remix-app`: Run the Docker container.
+- `docker-compose up --build`: Build and run the application using Docker Compose
 
 ---
 
