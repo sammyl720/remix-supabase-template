@@ -18,7 +18,6 @@ This template provides a starting point for building a Remix application with Ty
   - [3. Supabase Setup](#3-supabase-setup)
   - [4. Configure Environment Variables](#4-configure-environment-variables)
   - [5. Run the Application](#5-run-the-application)
-- [Project Structure](#project-structure)
 - [Available Scripts](#available-scripts)
 - [Usage](#usage)
   - [Authentication Pages](#authentication-pages)
